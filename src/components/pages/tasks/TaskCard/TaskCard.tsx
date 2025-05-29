@@ -1,50 +1,8 @@
 import classes from './TaskCard.module.scss';
 import defaultUser from './../../../../assets/header/profile.png';
+import { Task } from '../../../../api/tasksAPI';
 
-export enum TaskStatus {
-    NEW = 'Новая',
-    PROCESSING = 'Выполняется',
-    COMPLETED = 'Завершена',
-    CLOSE = 'Закрыта',
-}
-
-export enum TaskTypes {
-    BUG = 'Ошибка',
-    FEATURE = 'Новая функциональность',
-    FIX = 'Исправление',
-}
-
-export enum Priority {
-    NOT_IMPORTANT = 'Не важная',
-    MEDIUM_IMPORTANT = 'Средняя важность',
-    IMPORTANT = 'Важная',
-}
-
-export type Author = {
-    img: string;
-    fullName: string;
-};
-
-export type Task = {
-    id: number;
-    title: string;
-    description: string;
-    date: Date;
-    status: TaskStatus;
-    type: TaskTypes;
-    priority: Priority;
-    author: Author;
-};
-
-export const TaskCard: React.FC<Task> = ({
-    title,
-    description,
-    date,
-    status,
-    type,
-    priority,
-    author,
-}) => {
+export const TaskCard: React.FC<Task> = (task) => {
     const timeFormatter = new Intl.DateTimeFormat('ru', {
         second: '2-digit',
         minute: '2-digit',
@@ -55,30 +13,33 @@ export const TaskCard: React.FC<Task> = ({
         timeZoneName: 'short',
     });
 
-    const formattedDate = timeFormatter.format(date);
+    const formattedDate = timeFormatter.format(task.date);
 
     return (
         <article className={classes.card}>
             <div className={classes.marks}>
-                <span data-status={status} className={classes.status}>
-                    {status}
+                <span data-status={task.status} className={classes.status}>
+                    {task.status}
                 </span>
-                <span data-priority={priority} className={classes.priority}>
-                    {priority}
+                <span
+                    data-priority={task.priority}
+                    className={classes.priority}
+                >
+                    {task.priority}
                 </span>
-                <span data-type={type} className={classes.type}>
-                    {type}
+                <span data-type={task.type} className={classes.type}>
+                    {task.type}
                 </span>
             </div>
-            <h3>{title}</h3>
-            <p>{description}</p>
+            <h3>{task.title}</h3>
+            <p>{task.description}</p>
             <time dateTime={formattedDate} className={classes.time}>
                 {formattedDate}
             </time>
             <div className={classes.author}>
-                <span>{author.fullName}</span>
+                <span>{task.author.fullName}</span>
                 <img
-                    src={author.img || defaultUser}
+                    src={task.author.img || defaultUser}
                     alt=""
                     className={classes.authorPhoto}
                 />
