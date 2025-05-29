@@ -1,0 +1,80 @@
+@use './variables' as *;
+
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: $base-gap;
+}
+
+.column {
+    @extend .row;
+    flex-direction: column;
+}
+
+.row-mini {
+    @extend .row;
+    gap: $gap-mini;
+}
+
+.column-mini {
+    @extend .column;
+    gap: $gap-mini;
+}
+
+.row-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.row-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $base-gap;
+}
+
+.row-ac {
+    display: flex;
+    align-items: center;
+    gap: $base-gap;
+}
+
+.column-ac {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $base-gap;
+}
+
+.row-ac-mini {
+    display: flex;
+    align-items: center;
+    gap: $gap-mini;
+}
+
+.column-ac-mini {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $gap-mini;
+}
+
+.grid-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}

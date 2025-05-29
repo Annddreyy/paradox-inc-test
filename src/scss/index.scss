@@ -1,0 +1,37 @@
+@use './base';
+@use './colors';
+
+@use './variables' as *;
+
+@use 'sass:map';
+
+$primary: map.get($colors, 'primary');
+$secondary: map.get($colors, 'secondary');
+$error: map.get($colors, 'error');
+$red: map.get($colors, 'red');
+$green: map.get($colors, 'green');
+$yellow: map.get($colors, 'yellow');
+$orange: map.get($colors, 'orange');
+$gray: map.get($colors, 'gray');
+$light-gray: map.get($colors, 'light-gray');
+$medium-gray: map.get($colors, 'medium-gray');
+$black: map.get($colors, 'black');
+$white: map.get($colors, 'white');
+
+:root {
+    --primary: #{$primary};
+    --secondary: #{$secondary};
+    --error: #{$error};
+
+    --red: #{$red};
+    --green: #{$green};
+    --yellow: #{$yellow};
+    --orange: #{$orange};
+
+    --gray: #{$gray};
+    --light-gray: #{$light-gray};
+    --medium-gray: #{$medium-gray};
+
+    --black: #{$black};
+    --white: #{$white};
+}
