@@ -1,0 +1,14 @@
+@use './../../../scss/display' as *;
+@use './../../../scss/variables' as *;
+
+.header {
+    box-shadow: 2px 2px 4px var(--light-gray);
+    
+    div {
+        padding: $base-padding-6 0;
+
+        .title {
+            font-size: $font-size-lg;
+        }
+    }
+}
