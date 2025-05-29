@@ -163,7 +163,8 @@ export const getTasks =
                 },
             ]),
         );
-        dispatch(actions.setIsFetching(false));
+        // Интервал для теста анимации загрузки
+        setTimeout(() => dispatch(actions.setIsFetching(false)), 1000);
     };
 
 export const setTask =

@@ -4,9 +4,30 @@
 
 .cards {
     @extend .grid-3;
+
     gap: $base-gap;
     margin-top: $base-margin-8;
     min-height: 100vh;
+    width: 100%;
+
+    overflow-x: auto;
+
+    .cardsGroup {
+        @extend .column;
+
+        height: max-content;
+        width: 600px;
+        border: 1px solid var(--medium-gray);
+        padding: $base-padding-8;
+        background-color: var(--light-gray);
+        border-radius: $base-border-radius-2;
+
+        box-shadow: 2px 2px 4px var(--medium-gray);
+
+        .title {
+            font-size: $font-size-md;
+        }
+    }
 }
 
 @include breakpoint(1250px) {
