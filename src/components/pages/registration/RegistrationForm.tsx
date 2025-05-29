@@ -15,7 +15,7 @@ const RegistrationForm: React.FC = () => {
     const {
         register,
         handleSubmit,
-        formState: { errors, dirtyFields },
+        formState: { errors },
     } = useForm<FormData>();
 
     const onSubmit = (formData: FormData) => {
