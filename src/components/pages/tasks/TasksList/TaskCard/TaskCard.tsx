@@ -1,5 +1,5 @@
 import classes from './TaskCard.module.scss';
-import defaultUser from './../../../../assets/header/profile.png';
+import defaultUser from './../../../../../assets/header/profile.png';
 import { Task } from '../../../../../api/tasksAPI';
 import { useState } from 'react';
 import { DeleteMenu } from './DeleteMenu/DeleteMenu';
@@ -31,7 +31,11 @@ export const TaskCard: React.FC<Props> = ({ task }) => {
     return (
         <article className={classes.card} onClick={onCardClick}>
             <div className={classes.marks}>
-                <span data-status={task.status} className={classes.status} onClick={onCardClick}>
+                <span
+                    data-status={task.status}
+                    className={classes.status}
+                    onClick={onCardClick}
+                >
                     {task.status}
                 </span>
                 <span
@@ -57,7 +61,7 @@ export const TaskCard: React.FC<Props> = ({ task }) => {
                     className={classes.authorPhoto}
                 />
             </div>
-            {isDeleting && <DeleteMenu />}
+            {isDeleting && <DeleteMenu id={task.id} />}
         </article>
     );
 };

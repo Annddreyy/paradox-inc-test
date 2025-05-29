@@ -192,10 +192,11 @@ export const updateTask =
 export const deleteTask =
     (id: number): BaseThunk<Actions> =>
     async (dispatch) => {
-        const response = await tasksAPI.deleteTask(id);
-        if (response.status === ResponseStatuses.OK) {
-            dispatch(actions.deleteTask(id));
-        } else {
-            console.error('Error!');
-        }
+        // const response = await tasksAPI.deleteTask(id);
+        // if (response.status === ResponseStatuses.OK) {
+        //     dispatch(actions.deleteTask(id));
+        // } else {
+        //     console.error('Error!');
+        // }
+        dispatch(actions.deleteTask(id));
     };

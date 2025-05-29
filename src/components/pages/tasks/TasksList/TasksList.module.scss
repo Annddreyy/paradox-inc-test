@@ -3,9 +3,8 @@
 @use './../../../../scss/breakpoints' as *;
 
 .cards {
-    @extend .grid-3;
-
-    gap: $base-gap;
+    @extend .row;
+    
     margin-top: $base-margin-8;
     min-height: 100vh;
     width: 100%;

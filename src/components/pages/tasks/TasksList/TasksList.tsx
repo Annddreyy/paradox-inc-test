@@ -11,7 +11,7 @@ import {
 } from '../../../../redux/tasks/tasksSelectors';
 import { getTasks } from '../../../../redux/tasks/tasksThunks';
 import { Loading } from '../../../common/Loading/Loading';
-import { TaskCard } from '../TaskCard/TaskCard';
+import { TaskCard } from './TaskCard/TaskCard';
 import classes from './TasksList.module.scss';
 
 export const TasksList = () => {
@@ -33,7 +33,7 @@ export const TasksList = () => {
             <section key={v4()} className={classes.cardsGroup}>
                 <h2 className={classes.title}>{title}</h2>
                 {tasks.map((task) => (
-                    <TaskCard {...task} key={task.id} />
+                    <TaskCard task={task} key={task.id} />
                 ))}
             </section>
         )),

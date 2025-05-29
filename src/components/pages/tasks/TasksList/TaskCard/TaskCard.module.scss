@@ -1,16 +1,15 @@
-@use './../../../../scss/display' as *;
-@use './../../../../scss/variables' as *;
+@use './../../../../../scss/display' as *;
+@use './../../../../../scss/variables' as *;
 
 .card {
     @extend .column;
+    position: relative;
 
     border: 2px solid var(--primary);
     padding: $base-padding-4;
     border-radius: $base-border-radius-2;
     height: max-content;
-
-    width: 600px;
-
+    background-color: var(--white);
 
     .marks {
         @extend .row-wrap;
