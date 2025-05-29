@@ -1,0 +1,8 @@
+@use './../../../scss/variables' as *;
+
+.footer {
+    margin-top: $base-margin-4;
+    background-color: var(--medium-gray);
+    padding: $base-padding-6;
+    text-align: center;
+}
