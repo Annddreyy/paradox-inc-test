@@ -1,0 +1,26 @@
+@use './../../../scss/variables' as *;
+@use './../../../scss/breakpoints' as *;
+
+.field {
+    display: flex;
+
+    border: 1px solid var(--medium-gray);
+    background-color: var(--white);
+    padding: $base-padding-4;
+    border-radius: $base-border-radius;
+
+    datalist {
+        display: block;
+    }
+
+    &::placeholder {
+        color: var(--gray);
+    }
+
+    input,
+    textarea {
+        border: none;
+        outline: none;
+        width: 100%;
+    }
+}

@@ -1,0 +1,11 @@
+@use './../../../scss/display' as *;
+
+.loader {
+    @extend .row-center;
+    justify-content: center;
+    height: 100vh;
+
+    img {
+        width: 150px;
+    }
+}
