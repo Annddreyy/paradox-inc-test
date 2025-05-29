@@ -3,6 +3,7 @@ import './scss/index.scss';
 import { Route, Routes } from 'react-router-dom';
 import { Loading } from './components/common/Loading/Loading';
 import RegistrationForm from './components/pages/registration/RegistrationForm';
+import Tasks from './pages/Tasks/Tasks';
 const AuthorizationForm = React.lazy(
     () => import('./components/pages/authorization/AuthorizationForm'),
 );
@@ -23,6 +24,14 @@ const App: React.FC = () => {
                 element={
                     <React.Suspense fallback={<Loading />}>
                         <RegistrationForm />
+                    </React.Suspense>
+                }
+            ></Route>
+            <Route
+                path={'/tasks'}
+                element={
+                    <React.Suspense fallback={<Loading />}>
+                        <Tasks />
                     </React.Suspense>
                 }
             ></Route>
