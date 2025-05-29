@@ -6,7 +6,10 @@ const Header: React.FC = () => {
         <header className={classes.header}>
             <div className="container row-center">
                 <h1 className={classes.title}>Парадокс Инк</h1>
-                <img src={profile} alt="" />
+                <div className="row-ac">
+                    <span>Петров П. П.</span>
+                    <img src={profile} alt="" />
+                </div>
             </div>
         </header>
     );

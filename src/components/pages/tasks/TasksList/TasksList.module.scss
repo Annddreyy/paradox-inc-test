@@ -1,0 +1,22 @@
+@use './../../../../scss/display' as *;
+@use './../../../../scss/variables' as *;
+@use './../../../../scss/breakpoints' as *;
+
+.cards {
+    @extend .grid-3;
+    gap: $base-gap;
+    margin-top: $base-margin-8;
+    min-height: 100vh;
+}
+
+@include breakpoint(1250px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@include breakpoint(900px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
