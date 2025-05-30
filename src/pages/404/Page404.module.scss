@@ -1,0 +1,54 @@
+@use './../../scss/variables' as *;
+@use './../../scss/breakpoints' as *;
+@use './../../scss/display' as *;
+
+.top {
+    @extend .row-ac;
+    height: 100vh;
+    margin-bottom: -$base-gap-2;
+    gap: $base-gap-4;
+
+    img {
+        max-width: 100%;
+    }
+
+    .right {
+        @extend .column;
+        gap: $base-gap-2;
+        .title {
+            font-size: 64px;
+            color: var(--gray);
+        }
+    }
+}
+
+@include breakpoint(1300px) {
+    .top {
+        img {
+            width: 650px;
+        }
+    }
+}
+
+@include breakpoint(1100px) {
+    .top {
+        img {
+            width: 500px;
+        }
+    }
+}
+
+@include breakpoint(950px) {
+    .top {
+        img {
+            display: none;
+        }
+        .right {
+            margin-block: $base-margin-8;
+
+            .title {
+                font-size: $font-size-xxl;
+            }
+        }
+    }
+}

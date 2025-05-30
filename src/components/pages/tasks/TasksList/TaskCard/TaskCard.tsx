@@ -26,7 +26,7 @@ export const TaskCard: React.FC<Props> = React.memo(({ task }) => {
     const [menuCoords, setMenuCoords] = useState([0, 0] as [number, number]);
 
     const onCardClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setMenuCoords([event.clientX, event.clientY]);
+        setMenuCoords([event.pageX, event.pageY]);
         setIsOpenMenu((prev) => !prev);
     };
 
@@ -36,10 +36,14 @@ export const TaskCard: React.FC<Props> = React.memo(({ task }) => {
         isUpdateFormOpen
             ? (document.body.style.overflow = 'hidden')
             : (document.body.style.overflow = '');
-    });
+    }, [isUpdateFormOpen]);
 
     return (
-        <article className={classes.card} onClick={onCardClick}>
+        <article
+            className={classes.card}
+            onClick={onCardClick}
+            onMouseLeave={() => setIsOpenMenu(false)}
+        >
             <div className={classes.marks}>
                 <span
                     data-status={task.status}

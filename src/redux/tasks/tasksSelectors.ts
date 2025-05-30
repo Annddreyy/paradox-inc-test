@@ -21,10 +21,6 @@ export const getTasksByPriority = (priority: Priority) =>
         tasks.filter((task) => task.priority === priority),
     );
 
-export const getCurrentPage = (state: AppState) => {
-    return state.products.currentPage;
-};
-
 export const getIsFetching = (state: AppState) => {
     return state.products.isFetching;
 };

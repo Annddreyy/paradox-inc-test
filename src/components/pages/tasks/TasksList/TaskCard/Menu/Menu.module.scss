@@ -5,10 +5,15 @@
     @extend .column;
     gap: 0;
     width: min-content;
+
     position: absolute;
     top: 8px;
     right: 8px;
-    background-color: var(--light-gray);
+
+    background-color: var(--white);
+
+    border: 1px solid var(--medium-gray);
+    border-radius: $base-border-radius;
     .deleteButton {
         color: var(--red);
         border-radius: 100px;

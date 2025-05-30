@@ -4,12 +4,13 @@
 .form {
     @extend .column;
     gap: $base-gap-2;
-
-    border: 1px solid var(--medium-gray);
     width: 600px;
+
     margin: 0 auto;
     margin-top: $base-margin-9 * 2;
     padding: $base-padding-9 * 2;
+
+    border: 1px solid var(--medium-gray);
     border-radius: $base-border-radius-2;
 
     box-shadow: 2px 2px 4px var(--light-gray);
@@ -25,10 +26,9 @@
             width: max-content;
         }
         .registrationButton {
-            padding: $base-padding-6;
             @extend .row-center;
+            padding: $base-padding-6;
             justify-content: center;
         }
     }
-
 }

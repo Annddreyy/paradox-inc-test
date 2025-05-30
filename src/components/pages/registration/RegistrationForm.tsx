@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import classes from './RegistrationForm.module.scss';
+import classes from './../../common/Form/Form.module.scss';
 import cn from 'classnames';
 import { Field } from '../../common/Field/Field';
 import { useForm } from 'react-hook-form';

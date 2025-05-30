@@ -32,7 +32,6 @@ export const UpdateCardForm: React.FC<Props> = ({
     const {
         register,
         handleSubmit,
-        reset,
         formState: { errors },
     } = useForm({
         defaultValues: {
@@ -47,7 +46,6 @@ export const UpdateCardForm: React.FC<Props> = ({
     const dispatch = useDispatch<AppDispatch>();
 
     const onSubmit = (formData: FormData) => {
-        debugger;
         dispatch(
             updateTask(
                 card.id,
@@ -58,6 +56,7 @@ export const UpdateCardForm: React.FC<Props> = ({
                 formData.priority,
             ),
         );
+        setUpdateMenuIsOpen(false);
     };
 
     const statusOptions = Object.values(TaskStatus).map((status) => (
@@ -77,7 +76,10 @@ export const UpdateCardForm: React.FC<Props> = ({
     ));
 
     return (
-        <section className={classes.formWrapper}>
+        <section
+            className={classes.formWrapper}
+            onClick={(e) => e.stopPropagation()}
+        >
             <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
                 <div className={classes.top}>
                     <h2 className={classes.title}>Обновление задачи</h2>

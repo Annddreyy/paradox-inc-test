@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import classes from './AuthorizationForm.module.scss';
+import classes from './../../common/Form/Form.module.scss';
 import cn from 'classnames';
 import { Field } from '../../common/Field/Field';
 import { useForm } from 'react-hook-form';
@@ -15,7 +15,7 @@ const AuthorizationForm: React.FC = () => {
     const {
         register,
         handleSubmit,
-        formState: { errors, dirtyFields },
+        formState: { errors },
     } = useForm<FormData>();
 
     const onSubmit = (formData: FormData) => {

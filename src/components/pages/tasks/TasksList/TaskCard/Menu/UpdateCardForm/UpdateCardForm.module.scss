@@ -5,30 +5,37 @@
     position: absolute;
     top: 0;
     left: 0;
+
     width: 100vw;
     height: 100vh;
+
     background-color: rgba($color: #6280ad, $alpha: 0.3);
+
     z-index: 100;
     .form {
-        width: 500px;
-        height: 100vh;
-        overflow-y: auto;
         @extend .column;
-        background-color: var(--light-gray);
-        border-radius: $base-border-radius-2;
         position: fixed;
         top: 50%;
         left: 50%;
-        margin-bottom: 3em;
         transform: translate(-50%, -45%);
 
+        width: 500px;
+        height: 100vh;
+        margin-bottom: 3em;
+        overflow-y: auto;
+
+        background-color: var(--light-gray);
+        border-radius: $base-border-radius-2;
+
         .top {
+            @extend .row-center;
             padding: $base-padding-8;
+
             border-top-left-radius: $base-border-radius-2;
             border-top-right-radius: $base-border-radius-2;
-            @extend .row-center;
 
             background-color: #76a9b2;
+
             .title {
                 font-size: $font-size-lg;
             }
@@ -52,6 +59,5 @@
                 border-radius: $base-border-radius-2;
             }
         }
-
     }
 }

@@ -36,10 +36,8 @@ export type Task = {
 };
 
 export const tasksAPI = {
-    async getTasks(page: number) {
-        const response = await instance.get<DefaultResponse<Task[]>>(
-            `/tasks?page=${page}`,
-        );
+    async getTasks() {
+        const response = await instance.get<DefaultResponse<Task[]>>(`/tasks`);
         return response.data;
     },
 
