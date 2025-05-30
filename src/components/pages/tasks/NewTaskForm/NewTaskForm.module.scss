@@ -1,0 +1,63 @@
+@use './../../../../scss/variables' as *;
+@use './../../../../scss/display' as *;
+
+.formWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba($color: #6280ad, $alpha: 0.3);
+
+    z-index: 100;
+    .form {
+        @extend .column;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -45%);
+
+        width: 500px;
+        height: 100vh;
+        margin-bottom: 3em;
+        overflow-y: auto;
+
+        background-color: var(--light-gray);
+        border-radius: $base-border-radius-2;
+
+        .top {
+            @extend .row-center;
+            padding: $base-padding-8;
+
+            border-top-left-radius: $base-border-radius-2;
+            border-top-right-radius: $base-border-radius-2;
+
+            background-color: #76a9b2;
+
+            .title {
+                font-size: $font-size-lg;
+            }
+
+            button {
+                width: 30px;
+                height: 30px;
+                background-color: var(--red);
+                border-radius: 50%;
+                color: var(--white);
+            }
+        }
+
+        .bottom {
+            @extend .column;
+            padding: $base-padding-8;
+
+            select {
+                padding: $base-padding-6 $base-padding-6;
+                border: 1px solid var(--medium-gray);
+                border-radius: $base-border-radius-2;
+            }
+        }
+    }
+}

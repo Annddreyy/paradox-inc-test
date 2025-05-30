@@ -24,8 +24,7 @@ export type Author = {
     fullName: string;
 };
 
-export type Task = {
-    id: number;
+export type NewTask = {
     title: string;
     description: string;
     date: Date;
@@ -35,16 +34,25 @@ export type Task = {
     author: Author;
 };
 
+export type Task = { id: number } & NewTask;
+
 export const tasksAPI = {
     async getTasks() {
         const response = await instance.get<DefaultResponse<Task[]>>(`/tasks`);
         return response.data;
     },
 
-    async setTask(task: Task) {
+    async setTask({
+        title,
+        description,
+        status,
+        type,
+        priority,
+        author,
+    }: NewTask) {
         const response = await instance.post<DefaultResponse<Object>>(
             '/tasks',
-            task,
+            { title, description, status, type, priority, author },
         );
         return response.data;
     },

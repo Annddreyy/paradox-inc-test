@@ -1,5 +1,6 @@
 import { ResponseStatuses } from '../../api/api';
 import {
+    NewTask,
     Priority,
     Task,
     tasksAPI,
@@ -165,14 +166,15 @@ export const getTasks = (): BaseThunk<Actions> => async (dispatch) => {
 };
 
 export const setTask =
-    (task: Task): BaseThunk<Actions> =>
+    (task: NewTask): BaseThunk<Actions> =>
     async (dispatch) => {
-        const response = await tasksAPI.setTask(task);
-        if (response.status === ResponseStatuses.OK) {
-            dispatch(actions.setTask(task));
-        } else {
-            console.error('Error');
-        }
+        // const response = await tasksAPI.setTask(task);
+        // if (response.status === ResponseStatuses.OK) {
+        //     dispatch(actions.setTask(task));
+        // } else {
+        //     console.error('Error');
+        // }
+        dispatch(actions.setTask({ ...task, id: 100 }));
     };
 
 export const updateTask =
@@ -192,7 +194,6 @@ export const updateTask =
         // } else {
         //     console.error('Error!');
         // }
-        debugger;
         dispatch(
             actions.updateTask(id, title, descrition, status, type, priority),
         );
