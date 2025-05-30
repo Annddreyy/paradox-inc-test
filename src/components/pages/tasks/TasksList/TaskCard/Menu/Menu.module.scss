@@ -1,0 +1,21 @@
+@use './../../../../../../scss/variables' as *;
+@use './../../../../../../scss/display' as *;
+
+.menu {
+    @extend .column;
+    gap: 0;
+    width: min-content;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: var(--light-gray);
+    .deleteButton {
+        color: var(--red);
+        border-radius: 100px;
+    }
+
+    * {
+        text-align: start;
+        padding: $base-padding-4;
+    }
+}

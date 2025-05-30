@@ -179,19 +179,32 @@ export const setTask =
     };
 
 export const updateTask =
-    (id: number, title: string, descrition: string): BaseThunk<Actions> =>
+    (
+        id: number,
+        title: string,
+        descrition: string,
+        status: TaskStatus,
+        type: TaskTypes,
+        priority: Priority,
+    ): BaseThunk<Actions> =>
     async (dispatch) => {
-        const response = await tasksAPI.updateTask(id, title, descrition);
-        if (response.status === ResponseStatuses.OK) {
-            dispatch(actions.updateTask(id, title, descrition));
-        } else {
-            console.error('Error!');
-        }
+        // FIXME: Когда будет рабочее API раскомментировать
+        // const response = await tasksAPI.updateTask(id, title, descrition);
+        // if (response.status === ResponseStatuses.OK) {
+        //     dispatch(actions.updateTask(id, title, descrition));
+        // } else {
+        //     console.error('Error!');
+        // }
+        debugger;
+        dispatch(
+            actions.updateTask(id, title, descrition, status, type, priority),
+        );
     };
 
 export const deleteTask =
     (id: number): BaseThunk<Actions> =>
     async (dispatch) => {
+        // FIXME: Когда будет рабочее API раскомментировать
         // const response = await tasksAPI.deleteTask(id);
         // if (response.status === ResponseStatuses.OK) {
         //     dispatch(actions.deleteTask(id));

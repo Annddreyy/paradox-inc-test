@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { v4 } from 'uuid';
 import { useTasksByPriority } from '../../../../hooks/useTasksByPriority';
 import { useTasksByStatus } from '../../../../hooks/useTasksByStatus';
 import { useTasksByType } from '../../../../hooks/useTasksByType';
@@ -30,7 +29,7 @@ export const TasksList = () => {
 
     const blocks = tasksGroups.map((group) =>
         group.map(({ title, tasks }) => (
-            <section key={v4()} className={classes.cardsGroup}>
+            <section key={title} className={classes.cardsGroup}>
                 <h2 className={classes.title}>{title}</h2>
                 {tasks.map((task) => (
                     <TaskCard task={task} key={task.id} />

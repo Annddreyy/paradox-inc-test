@@ -1,14 +1,15 @@
 import classes from './TaskCard.module.scss';
 import defaultUser from './../../../../../assets/header/profile.png';
 import { Task } from '../../../../../api/tasksAPI';
-import { useState } from 'react';
-import { DeleteMenu } from './DeleteMenu/DeleteMenu';
+import React, { useEffect, useState } from 'react';
+import { Menu } from './Menu/Menu';
+import { UpdateCardForm } from './Menu/UpdateCardForm/UpdateCardForm';
 
 type Props = {
     task: Task;
 };
 
-export const TaskCard: React.FC<Props> = ({ task }) => {
+export const TaskCard: React.FC<Props> = React.memo(({ task }) => {
     const timeFormatter = new Intl.DateTimeFormat('ru', {
         second: '2-digit',
         minute: '2-digit',
@@ -21,12 +22,21 @@ export const TaskCard: React.FC<Props> = ({ task }) => {
 
     const formattedDate = timeFormatter.format(task.date);
 
-    const [isDeleting, setIsDeliting] = useState(false);
+    const [isOpenMenu, setIsOpenMenu] = useState(false);
+    const [menuCoords, setMenuCoords] = useState([0, 0] as [number, number]);
 
-    const onCardClick = () => {
-        debugger;
-        setIsDeliting((prev) => !prev);
+    const onCardClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setMenuCoords([event.clientX, event.clientY]);
+        setIsOpenMenu((prev) => !prev);
     };
+
+    const [isUpdateFormOpen, setIsUpdateFormOpen] = useState(false);
+
+    useEffect(() => {
+        isUpdateFormOpen
+            ? (document.body.style.overflow = 'hidden')
+            : (document.body.style.overflow = '');
+    });
 
     return (
         <article className={classes.card} onClick={onCardClick}>
@@ -61,7 +71,19 @@ export const TaskCard: React.FC<Props> = ({ task }) => {
                     className={classes.authorPhoto}
                 />
             </div>
-            {isDeleting && <DeleteMenu id={task.id} />}
+            {isOpenMenu && (
+                <Menu
+                    id={task.id}
+                    coords={menuCoords}
+                    setUpdateMenuIsOpen={setIsUpdateFormOpen}
+                />
+            )}
+            {isUpdateFormOpen && (
+                <UpdateCardForm
+                    setUpdateMenuIsOpen={setIsUpdateFormOpen}
+                    card={task}
+                />
+            )}
         </article>
     );
-};
+});

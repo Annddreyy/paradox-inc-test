@@ -1,5 +1,5 @@
 import { InferActions } from '../store';
-import { Task } from './../../api/tasksAPI';
+import { Priority, Task, TaskStatus, TaskTypes } from './../../api/tasksAPI';
 
 const initialState = {
     tasks: [] as Task[],
@@ -25,6 +25,7 @@ export const tasksReducer = (
                 tasks: [...state.tasks, action.payload.task],
             };
         case 'paradox-inc-test/tasks/UPDATE_TASK':
+            console.log(action.payload.status);
             return {
                 ...state,
                 tasks: state.tasks.map((task) =>
@@ -32,8 +33,7 @@ export const tasksReducer = (
                         ? task
                         : {
                               ...task,
-                              title: action.payload.title,
-                              description: action.payload.description,
+                              ...action.payload,
                           },
                 ),
             };
@@ -72,10 +72,17 @@ export const actions = {
             payload: { task },
         }) as const,
 
-    updateTask: (id: number, title: string, description: string) =>
+    updateTask: (
+        id: number,
+        title: string,
+        description: string,
+        status: TaskStatus,
+        type: TaskTypes,
+        priority: Priority,
+    ) =>
         ({
             type: 'paradox-inc-test/tasks/UPDATE_TASK',
-            payload: { id, title, description },
+            payload: { id, title, description, status, type, priority },
         }) as const,
 
     deleteTask: (id: number) =>

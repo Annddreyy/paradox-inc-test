@@ -3,7 +3,6 @@
 
 .card {
     @extend .column;
-    position: relative;
 
     border: 2px solid var(--primary);
     padding: $base-padding-4;
