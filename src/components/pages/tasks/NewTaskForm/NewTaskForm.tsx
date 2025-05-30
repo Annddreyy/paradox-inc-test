@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import classes from './NewTaskForm.module.scss';
+import classes from './../DefaultForm/DefaultForm.module.scss';
 import {
     Priority,
     Task,
@@ -45,21 +45,13 @@ export const NewTaskForm: React.FC<Props> = ({ setNewTaskFormIsOpen }) => {
         setNewTaskFormIsOpen(false);
     };
 
-    const statusOptions = Object.values(TaskStatus).map((status) => (
-        <option value={status} key={status}>
-            {status}
-        </option>
-    ));
-    const typeOptions = Object.values(TaskTypes).map((type) => (
-        <option value={type} key={type}>
-            {type}
-        </option>
-    ));
-    const priorityOptions = Object.values(Priority).map((priority) => (
-        <option value={priority} key={priority}>
-            {priority}
-        </option>
-    ));
+    const optionsList = [TaskStatus, TaskTypes, Priority].map((obj) =>
+        Object.values(obj).map((k) => (
+            <option value={k} key={k}>
+                {k}
+            </option>
+        )),
+    );
 
     return (
         <section
@@ -116,19 +108,19 @@ export const NewTaskForm: React.FC<Props> = ({ setNewTaskFormIsOpen }) => {
                     <div className="form-block">
                         <label htmlFor="status">Статус</label>
                         <select id="status" {...register('status')}>
-                            {statusOptions}
+                            {optionsList[0]}
                         </select>
                     </div>
                     <div className="form-block">
                         <label htmlFor="type">Тип задачи</label>
                         <select id="type" {...register('type')}>
-                            {typeOptions}
+                            {optionsList[1]}
                         </select>
                     </div>
                     <div className="form-block">
                         <label htmlFor="priority">Важность</label>
                         <select id="priority" {...register('priority')}>
-                            {priorityOptions}
+                            {optionsList[2]}
                         </select>
                     </div>
                     <button className="button-primary">Добавить</button>

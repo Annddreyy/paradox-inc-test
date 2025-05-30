@@ -91,6 +91,7 @@ const RegistrationForm: React.FC = () => {
                         type="file"
                         name="photo"
                         register={register}
+                        accept="image/*"
                     />
                     <ErrorMessage error={errors.patronymic} />
                 </div>

@@ -1,4 +1,4 @@
-import { AppState } from "../store";
+import { AppState } from '../store';
 
 export const getIsAuth = (state: AppState) => {
     return state.auth.isAuth;

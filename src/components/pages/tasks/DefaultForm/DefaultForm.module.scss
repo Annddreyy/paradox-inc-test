@@ -1,5 +1,5 @@
-@use './../../../../../../../scss/variables' as *;
-@use './../../../../../../../scss/display' as *;
+@use './../../../../scss/variables' as *;
+@use './../../../../scss/display' as *;
 
 .formWrapper {
     position: absolute;
@@ -14,14 +14,14 @@
     z-index: 100;
     .form {
         @extend .column;
+        
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -45%);
-
+        transform: translate(-50%, -50%);
+        
         width: 500px;
-        height: 100vh;
-        margin-bottom: 3em;
+        max-height: 80vh;
         overflow-y: auto;
 
         background-color: var(--light-gray);
@@ -29,6 +29,11 @@
 
         .top {
             @extend .row-center;
+            
+            position: sticky;
+            top: 0;
+            left: 0;
+
             padding: $base-padding-8;
 
             border-top-left-radius: $base-border-radius-2;

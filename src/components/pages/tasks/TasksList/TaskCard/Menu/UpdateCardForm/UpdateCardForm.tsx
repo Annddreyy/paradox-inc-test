@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { Field } from '../../../../../../common/Field/Field';
 import { ErrorMessage } from '../../../../../../common/ErrorMessage/ErrorMessage';
-import classes from './UpdateCardForm.module.scss';
+import classes from './../../../../DefaultForm/DefaultForm.module.scss';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../../../../../redux/store';
 import { updateTask } from '../../../../../../../redux/tasks/tasksThunks';
@@ -59,21 +59,13 @@ export const UpdateCardForm: React.FC<Props> = ({
         setUpdateMenuIsOpen(false);
     };
 
-    const statusOptions = Object.values(TaskStatus).map((status) => (
-        <option value={status} key={status}>
-            {status}
-        </option>
-    ));
-    const typeOptions = Object.values(TaskTypes).map((type) => (
-        <option value={type} key={type}>
-            {type}
-        </option>
-    ));
-    const priorityOptions = Object.values(Priority).map((priority) => (
-        <option value={priority} key={priority}>
-            {priority}
-        </option>
-    ));
+    const optionsList = [TaskStatus, TaskTypes, Priority].map((obj) =>
+        Object.values(obj).map((k) => (
+            <option value={k} key={k}>
+                {k}
+            </option>
+        )),
+    );
 
     return (
         <section
@@ -130,19 +122,19 @@ export const UpdateCardForm: React.FC<Props> = ({
                     <div className="form-block">
                         <label htmlFor="status">Статус</label>
                         <select id="status" {...register('status')}>
-                            {statusOptions}
+                            {optionsList[0]}
                         </select>
                     </div>
                     <div className="form-block">
                         <label htmlFor="type">Тип задачи</label>
                         <select id="type" {...register('type')}>
-                            {typeOptions}
+                            {optionsList[1]}
                         </select>
                     </div>
                     <div className="form-block">
                         <label htmlFor="priority">Важность</label>
                         <select id="priority" {...register('priority')}>
-                            {priorityOptions}
+                            {optionsList[2]}
                         </select>
                     </div>
                     <button className="button-primary">Обновить</button>
