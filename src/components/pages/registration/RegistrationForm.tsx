@@ -5,11 +5,15 @@ import { Field } from '../../common/Field/Field';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '../../common/ErrorMessage/ErrorMessage';
 import { PasswordInput } from '../../common/PasswordInput/PasswordInput';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../redux/store';
+import { registration } from '../../../redux/auth/authThunks';
 
 type FormData = {
     surname: string;
     name: string;
-    patronymic: string;
+    patronymic: string | null;
+    photo: string | null;
     login: string;
     password: string;
 };
@@ -21,8 +25,10 @@ const RegistrationForm: React.FC = () => {
         formState: { errors, dirtyFields },
     } = useForm<FormData>();
 
+    const dispatch = useDispatch<AppDispatch>();
+
     const onSubmit = (formData: FormData) => {
-        console.log(formData);
+        dispatch(registration({ ...formData }));
     };
 
     return (
@@ -42,9 +48,9 @@ const RegistrationForm: React.FC = () => {
                             required: 'Это поле обязательное',
                         }}
                         className={cn({
-                            inputError: errors.password,
+                            inputError: errors.surname,
                             inputCorrect:
-                                !errors.password && dirtyFields.password,
+                                !errors.surname && dirtyFields.surname,
                         })}
                     />
                     <ErrorMessage error={errors.surname} />
@@ -62,9 +68,8 @@ const RegistrationForm: React.FC = () => {
                             required: 'Это поле обязательное',
                         }}
                         className={cn({
-                            inputError: errors.password,
-                            inputCorrect:
-                                !errors.password && dirtyFields.password,
+                            inputError: errors.name,
+                            inputCorrect: !errors.name && dirtyFields.name,
                         })}
                     />
                     <ErrorMessage error={errors.name} />
@@ -75,6 +80,16 @@ const RegistrationForm: React.FC = () => {
                         id="patronymic"
                         type="text"
                         name="patronymic"
+                        register={register}
+                    />
+                    <ErrorMessage error={errors.patronymic} />
+                </div>
+                <div className="form-block">
+                    <label htmlFor="photo">Фото</label>
+                    <Field
+                        id="photo"
+                        type="file"
+                        name="photo"
                         register={register}
                     />
                     <ErrorMessage error={errors.patronymic} />
@@ -92,9 +107,8 @@ const RegistrationForm: React.FC = () => {
                             required: 'Это поле обязательное',
                         }}
                         className={cn({
-                            inputError: errors.password,
-                            inputCorrect:
-                                !errors.password && dirtyFields.password,
+                            inputError: errors.login,
+                            inputCorrect: !errors.login && dirtyFields.login,
                         })}
                     />
                     <ErrorMessage error={errors.login} />

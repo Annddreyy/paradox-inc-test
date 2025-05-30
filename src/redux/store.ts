@@ -11,9 +11,11 @@ import {
     thunk as thunkMiddleware,
 } from 'redux-thunk';
 import { tasksReducer } from './tasks/tasksReducer';
+import { authReducer } from './auth/authReducer';
 
 const rootReducer = combineReducers({
-    products: tasksReducer,
+    tasks: tasksReducer,
+    auth: authReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

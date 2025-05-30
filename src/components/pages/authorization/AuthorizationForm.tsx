@@ -5,6 +5,9 @@ import { Field } from '../../common/Field/Field';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '../../common/ErrorMessage/ErrorMessage';
 import { PasswordInput } from '../../common/PasswordInput/PasswordInput';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../redux/store';
+import { login } from '../../../redux/auth/authThunks';
 
 type FormData = {
     login: string;
@@ -18,8 +21,10 @@ const AuthorizationForm: React.FC = () => {
         formState: { errors, dirtyFields },
     } = useForm<FormData>();
 
+    const dispatch = useDispatch<AppDispatch>();
+
     const onSubmit = (formData: FormData) => {
-        console.log(formData);
+        dispatch(login(formData.login, formData.password));
     };
 
     return (
@@ -39,9 +44,8 @@ const AuthorizationForm: React.FC = () => {
                             required: 'Это поле обязательное',
                         }}
                         className={cn({
-                            inputError: errors.password,
-                            inputCorrect:
-                                !errors.password && dirtyFields.password,
+                            inputError: errors.login,
+                            inputCorrect: !errors.login && dirtyFields.login,
                         })}
                     />
                     <ErrorMessage error={errors.login} />

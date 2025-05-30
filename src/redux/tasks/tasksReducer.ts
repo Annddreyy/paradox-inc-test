@@ -25,7 +25,6 @@ export const tasksReducer = (
                 tasks: [...state.tasks, action.payload.task],
             };
         case 'paradox-inc-test/tasks/UPDATE_TASK':
-            console.log(action.payload.status);
             return {
                 ...state,
                 tasks: state.tasks.map((task) =>

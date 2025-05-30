@@ -3,7 +3,7 @@ import { Priority, TaskStatus, TaskTypes } from '../../api/tasksAPI';
 import { AppState } from '../store';
 
 export const getTasksSelector = (state: AppState) => {
-    return state.products.tasks;
+    return state.tasks.tasks;
 };
 
 export const getTasksByStatus = (status: TaskStatus) =>
@@ -22,5 +22,5 @@ export const getTasksByPriority = (priority: Priority) =>
     );
 
 export const getIsFetching = (state: AppState) => {
-    return state.products.isFetching;
+    return state.tasks.isFetching;
 };
