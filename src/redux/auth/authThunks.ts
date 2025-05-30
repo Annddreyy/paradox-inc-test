@@ -1,50 +1,43 @@
 import { ResponseStatuses } from '../../api/api';
-import { authAPI } from '../../api/authAPI';
+import { authAPI, RegistrationParams } from '../../api/authAPI';
 import { BaseThunk } from '../store';
 import { actions, Actions } from './authReducer';
-
-type RegistrationParams = {
-    login: string;
-    password: string;
-    surname: string;
-    name: string;
-    patronymic: string | null;
-    photo: string | null;
-};
 
 export const login =
     (login: string, password: string): BaseThunk<Actions> =>
     async (dispatch) => {
-        const response = await authAPI.login(login, password);
-        if (response.status === ResponseStatuses.OK) {
-            dispatch(actions.login(response.data.token, response.data.user));
-            localStorage.setItem('token', response.data.token);
-        } else {
-            dispatch(actions.setError(response.message[0]));
-        }
+        // const response = await authAPI.login(login, password);
+        // if (response.status === ResponseStatuses.OK) {
+        //     dispatch(actions.login(response.data.token, response.data.user));
+        //     localStorage.setItem('token', response.data.token);
+        // } else {
+        //     dispatch(actions.setError(response.message[0]));
+        // }
+        dispatch(
+            actions.login('13420593202', {
+                surname: 'Иванов',
+                name: 'Иван',
+                patronymic: 'Иванович',
+                photo: 'https://i.pravatar.cc/300?img=1',
+            }),
+        );
     };
 
 export const registration =
-    ({
-        login,
-        password,
-        surname,
-        name,
-        patronymic,
-        photo,
-    }: RegistrationParams): BaseThunk<Actions> =>
+    (user: RegistrationParams): BaseThunk<Actions> =>
     async (dispatch) => {
-        const response = await authAPI.registration(
-            login,
-            password,
-            surname,
-            name,
-            patronymic,
-            photo,
+        // const response = await authAPI.registration({...user});
+        // if (response.status === ResponseStatuses.OK) {
+        //     dispatch(actions.login(response.data.token, response.data.user));
+        // } else {
+        //     dispatch(actions.setError(response.message[0]));
+        // }
+        dispatch(
+            actions.login('13420593202', {
+                surname: 'Иванов',
+                name: 'Иван',
+                patronymic: 'Иванович',
+                photo: 'https://i.pravatar.cc/300?img=1',
+            }),
         );
-        if (response.status === ResponseStatuses.OK) {
-            dispatch(actions.login(response.data.token, response.data.user));
-        } else {
-            dispatch(actions.setError(response.message[0]));
-        }
     };

@@ -1,12 +1,4 @@
-import { ResponseStatuses } from '../../api/api';
-import {
-    NewTask,
-    Priority,
-    Task,
-    tasksAPI,
-    TaskStatus,
-    TaskTypes,
-} from '../../api/tasksAPI';
+import { NewTask, Priority, TaskStatus, TaskTypes } from '../../api/tasksAPI';
 import { BaseThunk } from '../store';
 import { actions, Actions } from './tasksReducer';
 

@@ -7,6 +7,15 @@ export type User = {
     photo: string | null;
 };
 
+export type RegistrationParams = {
+    login: string;
+    password: string;
+    surname: string;
+    name: string;
+    patronymic: string | null;
+    photo: string | null;
+};
+
 export const authAPI = {
     async login(login: string, password: string) {
         const response = await instance.post<
@@ -18,14 +27,14 @@ export const authAPI = {
         return response.data;
     },
 
-    async registration(
-        login: string,
-        password: string,
-        surname: string,
-        name: string,
-        patronymic: string | null,
-        photo: string | null,
-    ) {
+    async registration({
+        login,
+        password,
+        surname,
+        name,
+        patronymic,
+        photo,
+    }: RegistrationParams) {
         const response = await instance.post<
             DefaultResponse<{
                 token: string;

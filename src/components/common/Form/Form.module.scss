@@ -22,13 +22,15 @@
     .bottom {
         @extend .row;
         gap: $base-gap-4;
+
         p {
             width: max-content;
         }
+        
         .registrationButton {
             @extend .row-center;
-            padding: $base-padding-6;
             justify-content: center;
+            padding: $base-padding-6;
         }
     }
 }

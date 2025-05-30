@@ -5,7 +5,7 @@ import eye from './../../../assets/input/eye.png';
 import eyeOff from './../../../assets/input/eye-off.png';
 import lock from './../../../assets/input/lock.png';
 
-type PasswordInput = {
+type PasswordInputProps = {
     id: string;
     name: string;
     placeholder?: string | undefined;
@@ -16,17 +16,19 @@ type PasswordInput = {
     style?: CSSProperties;
 };
 
-export const PasswordInput: React.FC<PasswordInput> = (props) => {
+export const PasswordInput: React.FC<PasswordInputProps> = ({
+    id,
+    name,
+    placeholder,
+    register,
+    options,
+    className,
+    style,
+}) => {
     const [showingPassword, setShowingPassword] = useState(false);
-    const [passwordValue, setPasswordValue] = useState('');
 
-    const changeVisibillity = () => {
+    const changeVisibility = () => {
         setShowingPassword((prev) => !prev);
-    };
-
-    const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-        props.register(props.name, props.options);
-        setPasswordValue(event.target.value);
     };
 
     return (
@@ -34,14 +36,17 @@ export const PasswordInput: React.FC<PasswordInput> = (props) => {
             <div>
                 <img src={lock} alt="" />
                 <input
+                    id={id}
                     type={showingPassword ? 'text' : 'password'}
-                    onChange={onChangeHandler}
-                    value={passwordValue}
+                    placeholder={placeholder}
+                    className={className}
+                    style={style}
+                    {...register(name, options)}
                 />
             </div>
             <img
                 src={showingPassword ? eye : eyeOff}
-                onClick={changeVisibillity}
+                onClick={changeVisibility}
                 alt=""
             />
         </div>

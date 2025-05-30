@@ -42,17 +42,10 @@ export const tasksAPI = {
         return response.data;
     },
 
-    async setTask({
-        title,
-        description,
-        status,
-        type,
-        priority,
-        author,
-    }: NewTask) {
+    async setTask(newTask: NewTask) {
         const response = await instance.post<DefaultResponse<Object>>(
             '/tasks',
-            { title, description, status, type, priority, author },
+            { ...newTask },
         );
         return response.data;
     },
