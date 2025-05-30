@@ -15,7 +15,7 @@ const AuthorizationForm: React.FC = () => {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { errors, dirtyFields },
     } = useForm<FormData>();
 
     const onSubmit = (formData: FormData) => {
@@ -27,7 +27,9 @@ const AuthorizationForm: React.FC = () => {
             <form className={classes.form}>
                 <h1 className={classes.title}>Авторизация</h1>
                 <div className="form-block">
-                    <label htmlFor="login">Логин</label>
+                    <label htmlFor="login">
+                        Логин <span className="text-red">*</span>
+                    </label>
                     <Field
                         id="login"
                         type="text"
@@ -36,11 +38,18 @@ const AuthorizationForm: React.FC = () => {
                         options={{
                             required: 'Это поле обязательное',
                         }}
+                        className={cn({
+                            inputError: errors.password,
+                            inputCorrect:
+                                !errors.password && dirtyFields.password,
+                        })}
                     />
                     <ErrorMessage error={errors.login} />
                 </div>
                 <div className="form-block">
-                    <label htmlFor="password">Пароль</label>
+                    <label htmlFor="password">
+                        Пароль <span className="text-red">*</span>
+                    </label>
                     <PasswordInput
                         id="password"
                         name="password"
@@ -48,6 +57,11 @@ const AuthorizationForm: React.FC = () => {
                         options={{
                             required: 'Это поле является обязательным',
                         }}
+                        className={cn({
+                            inputError: errors.password,
+                            inputCorrect:
+                                !errors.password && dirtyFields.password,
+                        })}
                     />
                     <ErrorMessage error={errors.login} />
                 </div>
