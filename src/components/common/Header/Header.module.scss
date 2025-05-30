@@ -12,10 +12,14 @@
             font-size: $font-size-lg;
         }
 
-        .img {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
+        .user {
+            position: relative;
+            .img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                cursor: pointer;
+            }
         }
     }
 }

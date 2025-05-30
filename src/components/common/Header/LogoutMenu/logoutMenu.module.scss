@@ -1,0 +1,12 @@
+@use './../../../../scss/variables' as *;
+
+.button {
+    position: absolute;
+    bottom: -2em;
+    right: 0;
+    color: var(--red);
+    background-color: var(--white);
+    padding: $base-padding-2 $base-padding-4;
+    border: 1px solid var(--medium-gray);
+    border-radius: $base-border-radius;
+}

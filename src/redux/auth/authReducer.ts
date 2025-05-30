@@ -23,6 +23,7 @@ export const authReducer = (
                 user: action.payload.user,
             };
         case 'paradox-inc-test/auth/LOGOUT':
+            debugger;
             return {
                 ...state,
                 isAuth: false,

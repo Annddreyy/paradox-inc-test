@@ -16,15 +16,7 @@ type PasswordInputProps = {
     style?: CSSProperties;
 };
 
-export const PasswordInput: React.FC<PasswordInputProps> = ({
-    id,
-    name,
-    placeholder,
-    register,
-    options,
-    className,
-    style,
-}) => {
+export const PasswordInput: React.FC<PasswordInputProps> = (attr) => {
     const [showingPassword, setShowingPassword] = useState(false);
 
     const changeVisibility = () => {
@@ -36,12 +28,12 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
             <div>
                 <img src={lock} alt="" />
                 <input
-                    id={id}
+                    id={attr.id}
                     type={showingPassword ? 'text' : 'password'}
-                    placeholder={placeholder}
-                    className={className}
-                    style={style}
-                    {...register(name, options)}
+                    placeholder={attr.placeholder}
+                    className={attr.className}
+                    style={attr.style}
+                    {...attr.register(attr.name, attr.options)}
                 />
             </div>
             <img

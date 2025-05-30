@@ -23,6 +23,12 @@ export const login =
         );
     };
 
+export const logout = (): BaseThunk<Actions> => async (dispatch) => {
+    localStorage.removeItem('token');
+    console.log(1);
+    dispatch(actions.logout());
+};
+
 export const registration =
     (user: RegistrationParams): BaseThunk<Actions> =>
     async (dispatch) => {

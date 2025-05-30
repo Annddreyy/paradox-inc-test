@@ -21,27 +21,27 @@ type Field = {
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const Field: React.FC<Field> = (field) => {
+export const Field: React.FC<Field> = (attr) => {
     return (
         <>
-            {field.type !== 'textarea' ? (
-                <div className={cn(classes.field, field.className)}>
-                    <img src={field.icon} alt="" />
+            {attr.type !== 'textarea' ? (
+                <div className={cn(classes.field, attr.className)}>
+                    <img src={attr.icon} alt="" />
                     <input
-                        id={field.id}
-                        type={field.type}
-                        placeholder={field.placeholder}
-                        style={field.style}
-                        {...field.register(field.name, field.options)}
-                        accept={field.accept}
-                        list={field.list}
-                        onChange={field.onChange}
-                        value={field.value}
+                        id={attr.id}
+                        type={attr.type}
+                        placeholder={attr.placeholder}
+                        style={attr.style}
+                        {...attr.register(attr.name, attr.options)}
+                        accept={attr.accept}
+                        list={attr.list}
+                        onChange={attr.onChange}
+                        value={attr.value}
                     />
-                    {field.className && (
+                    {attr.className && (
                         <img
                             src={
-                                field.className === 'inputCorrect'
+                                attr.className === 'inputCorrect'
                                     ? correct
                                     : error
                             }
@@ -51,15 +51,15 @@ export const Field: React.FC<Field> = (field) => {
                 </div>
             ) : (
                 <div
-                    className={cn(classes.field, field.className)}
-                    style={field.style}
+                    className={cn(classes.field, attr.className)}
+                    style={attr.style}
                 >
-                    <img src={field.icon} alt="" />
+                    <img src={attr.icon} alt="" />
                     <textarea
-                        id={field.id}
-                        placeholder={field.placeholder}
-                        style={field.style}
-                        {...field.register(field.name, field.options)}
+                        id={attr.id}
+                        placeholder={attr.placeholder}
+                        style={attr.style}
+                        {...attr.register(attr.name, attr.options)}
                     ></textarea>
                 </div>
             )}
