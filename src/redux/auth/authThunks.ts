@@ -43,6 +43,7 @@ export const registration =
         // Для тестирования сообшения об ошибке
         // dispatch(actions.setError('Ошибка при регистрации'));
 
+        dispatch(actions.setError(''));
         dispatch(
             actions.login('13420593202', {
                 surname: 'Иванов',
@@ -51,5 +52,4 @@ export const registration =
                 photo: 'https://i.pravatar.cc/300?img=1',
             }),
         );
-        dispatch(actions.setError(''));
     };
