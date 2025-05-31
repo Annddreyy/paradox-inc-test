@@ -23,6 +23,7 @@ const RegistrationForm: React.FC = () => {
     const {
         register,
         handleSubmit,
+        setValue,
         formState: { errors, dirtyFields },
     } = useForm<FormData>();
 
@@ -60,6 +61,13 @@ const RegistrationForm: React.FC = () => {
                                     inputCorrect:
                                         !errors.surname && dirtyFields.surname,
                                 })}
+                                onChange={(
+                                    event: React.ChangeEvent<HTMLInputElement>,
+                                ) => {
+                                    setValue('surname', event.target.value, {
+                                        shouldDirty: true,
+                                    });
+                                }}
                             />
                             <ErrorMessage error={errors.surname} />
                         </div>
@@ -80,6 +88,13 @@ const RegistrationForm: React.FC = () => {
                                     inputCorrect:
                                         !errors.name && dirtyFields.name,
                                 })}
+                                onChange={(
+                                    event: React.ChangeEvent<HTMLInputElement>,
+                                ) => {
+                                    setValue('name', event.target.value, {
+                                        shouldDirty: true,
+                                    });
+                                }}
                             />
                             <ErrorMessage error={errors.name} />
                         </div>
@@ -119,6 +134,13 @@ const RegistrationForm: React.FC = () => {
                                     inputCorrect:
                                         !errors.login && dirtyFields.login,
                                 })}
+                                onChange={(
+                                    event: React.ChangeEvent<HTMLInputElement>,
+                                ) => {
+                                    setValue('login', event.target.value, {
+                                        shouldDirty: true,
+                                    });
+                                }}
                             />
                             <ErrorMessage error={errors.login} />
                         </div>

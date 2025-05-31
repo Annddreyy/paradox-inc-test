@@ -19,6 +19,7 @@ const AuthorizationForm: React.FC = () => {
     const {
         register,
         handleSubmit,
+        setValue,
         formState: { errors, dirtyFields },
     } = useForm<FormData>();
 
@@ -56,6 +57,11 @@ const AuthorizationForm: React.FC = () => {
                                     inputCorrect:
                                         !errors.login && dirtyFields.login,
                                 })}
+                                onChange={(
+                                    event: React.ChangeEvent<HTMLInputElement>,
+                                ) => {
+                                    setValue('login', event.target.value);
+                                }}
                             />
                             <ErrorMessage error={errors.login} />
                         </div>
@@ -77,7 +83,7 @@ const AuthorizationForm: React.FC = () => {
                                         dirtyFields.password,
                                 })}
                             />
-                            <ErrorMessage error={errors.login} />
+                            <ErrorMessage error={errors.password} />
                         </div>
                         <button className="button-primary">Войти</button>
                         <div className={classes.bottom}>

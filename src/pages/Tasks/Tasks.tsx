@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import Footer from '../../components/common/Footer/Footer';
 import Header from '../../components/common/Header/Header';
-import { TasksList } from '../../components/pages/tasks/TasksList/TasksList';
+import { TasksList } from '../../components/pages/Tasks/TasksList/TasksList';
 import pencilIcon from './../../assets/tasks/pencil-icon.png';
 import classes from './Tasks.module.scss';
-import { NewTaskForm } from '../../components/pages/tasks/NewTaskForm/NewTaskForm';
+import { NewTaskForm } from '../../components/pages/Tasks/NewTaskForm/NewTaskForm';
 import { useSelector } from 'react-redux';
 import { getIsAuth } from '../../redux/auth/authSelectors';
 import { Navigate } from 'react-router-dom';
