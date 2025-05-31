@@ -33,7 +33,7 @@ export const authReducer = (
         case 'paradox-inc-test/auth/SET_ERROR':
             return {
                 ...state,
-                error: 'Неверный логин или пароль',
+                error: action.payload.error,
             };
         default:
             return state;
