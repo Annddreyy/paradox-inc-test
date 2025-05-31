@@ -59,10 +59,10 @@
             padding: $base-padding-8;
 
             select {
-                padding: $base-padding-6 calc(#{$base-padding-6} + 1.5rem); // справа больше
+                padding: $base-padding-6 calc(#{$base-padding-6} + 1.5rem);
                 border: 1px solid var(--medium-gray);
                 border-radius: $base-border-radius-2;
-                appearance: none; // убирает стандартную стрелку
+                appearance: none;
                 background-image: url('./../../../../assets/tasks/arrow_down_icon.svg');
                 background-repeat: no-repeat;
                 background-position: right $base-padding-6 center;

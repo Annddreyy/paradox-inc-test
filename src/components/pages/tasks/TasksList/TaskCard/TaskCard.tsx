@@ -3,7 +3,7 @@ import defaultUser from './../../../../../assets/header/profile.png';
 import { Task } from '../../../../../api/tasksAPI';
 import React, { useEffect, useState } from 'react';
 import { Menu } from './Menu/Menu';
-import { UpdateCardForm } from './Menu/UpdateCardForm/UpdateCardForm';
+import { UpdateTaskForm } from './Menu/UpdateCardForm/UpdateCardForm';
 
 type Props = {
     task: Task;
@@ -83,7 +83,7 @@ export const TaskCard: React.FC<Props> = React.memo(({ task }) => {
                 />
             )}
             {isUpdateFormOpen && (
-                <UpdateCardForm
+                <UpdateTaskForm
                     setUpdateMenuIsOpen={setIsUpdateFormOpen}
                     card={task}
                 />

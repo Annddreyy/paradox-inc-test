@@ -1,6 +1,27 @@
 @use './../../../../../scss/display' as *;
 @use './../../../../../scss/variables' as *;
 
+@use 'sass:map';
+
+$statuses: (
+    'new': 'Новая',
+    'processing': 'Выполняется',
+    'completed': 'Завершена',
+    'close': 'Закрыта',
+);
+
+$priority: (
+    'not-important': 'Не важная',
+    'med-important': 'Средняя важность',
+    'important': 'Важная',
+);
+
+$types: (
+    'fix': 'Исправление',
+    'feature': 'Новая функциональность',
+    'error': 'Ошибка',
+);
+
 .card {
     @extend .column;
     height: max-content;
@@ -22,47 +43,47 @@
         }
 
         .status {
-            &[data-status='Новая'] {
+            &[data-status='#{map.get($statuses, "new")}'] {
                 background-color: var(--primary);
             }
 
-            &[data-status='Выполняется'] {
+            &[data-status='#{map.get($statuses, "processing")}'] {
                 background-color: var(--orange);
             }
 
-            &[data-status='Завершена'] {
+            &[data-status='#{map.get($statuses, "completed")}'] {
                 background-color: var(--green);
             }
 
-            &[data-status='Закрыта'] {
+            &[data-status='#{map.get($statuses, "close")}'] {
                 background-color: var(--red);
             }
         }
 
         .priority {
-            &[data-priority='Не важная'] {
+            &[data-priority='#{map.get($priority, "not-important")}'] {
                 background-color: var(--primary);
             }
 
-            &[data-priority='Средняя важность'] {
+            &[data-priority='#{map.get($priority, "med-important")}'] {
                 background-color: var(--orange);
             }
 
-            &[data-priority='Важная'] {
+            &[data-priority='#{map.get($priority, "important")}'] {
                 background-color: var(--green);
             }
         }
 
         .type {
-            &[data-type='Исправление'] {
+            &[data-type='#{map.get($types, "fix")}'] {
                 background-color: var(--primary);
             }
 
-            &[data-type='Новая функциональность'] {
+            &[data-type='#{map.get($types, "feature")}'] {
                 background-color: var(--yellow);
             }
 
-            &[data-type='Ошибка'] {
+            &[data-type='#{map.get($types, "error")}'] {
                 background-color: var(--red);
             }
         }
