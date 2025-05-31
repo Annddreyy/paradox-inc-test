@@ -1,5 +1,4 @@
-import { ResponseStatuses } from '../../api/api';
-import { authAPI, RegistrationParams } from '../../api/authAPI';
+import { RegistrationParams } from '../../api/authAPI';
 import { BaseThunk } from '../store';
 import { actions, Actions } from './authReducer';
 
@@ -13,6 +12,9 @@ export const login =
         // } else {
         //     dispatch(actions.setError(response.message[0]));
         // }
+        // Для тестирования сообшения об ошибке
+        // dispatch(actions.setError('Неверный логин или пароль'));
+        dispatch(actions.setError(''));
         dispatch(
             actions.login('13420593202', {
                 surname: 'Иванов',
@@ -25,7 +27,6 @@ export const login =
 
 export const logout = (): BaseThunk<Actions> => async (dispatch) => {
     localStorage.removeItem('token');
-    console.log(1);
     dispatch(actions.logout());
 };
 
@@ -38,6 +39,10 @@ export const registration =
         // } else {
         //     dispatch(actions.setError(response.message[0]));
         // }
+
+        // Для тестирования сообшения об ошибке
+        // dispatch(actions.setError('Ошибка при регистрации'));
+
         dispatch(
             actions.login('13420593202', {
                 surname: 'Иванов',
@@ -46,4 +51,5 @@ export const registration =
                 photo: 'https://i.pravatar.cc/300?img=1',
             }),
         );
+        dispatch(actions.setError(''));
     };

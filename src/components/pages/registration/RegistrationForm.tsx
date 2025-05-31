@@ -8,7 +8,7 @@ import { PasswordInput } from '../../common/PasswordInput/PasswordInput';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../../redux/store';
 import { registration } from '../../../redux/auth/authThunks';
-import { getIsAuth } from '../../../redux/auth/authSelectors';
+import { getErrorMessage, getIsAuth } from '../../../redux/auth/authSelectors';
 
 type FormData = {
     surname: string;
@@ -34,6 +34,7 @@ const RegistrationForm: React.FC = () => {
     };
 
     const isAuth = useSelector(getIsAuth);
+    const error = useSelector(getErrorMessage);
 
     return (
         <>
@@ -44,6 +45,7 @@ const RegistrationForm: React.FC = () => {
                         onSubmit={handleSubmit(onSubmit)}
                     >
                         <h1 className={classes.title}>Регистрация</h1>
+                        {error && <div className="text-red">{error}</div>}
                         <div className="form-block">
                             <label htmlFor="surname">
                                 Фамилия <span className="text-red">*</span>

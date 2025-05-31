@@ -8,7 +8,7 @@ import { PasswordInput } from '../../common/PasswordInput/PasswordInput';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../../redux/store';
 import { login } from '../../../redux/auth/authThunks';
-import { getIsAuth } from '../../../redux/auth/authSelectors';
+import { getErrorMessage, getIsAuth } from '../../../redux/auth/authSelectors';
 
 type FormData = {
     login: string;
@@ -26,10 +26,12 @@ const AuthorizationForm: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     const onSubmit = (formData: FormData) => {
+        if (error) return;
         dispatch(login(formData.login, formData.password));
     };
 
     const isAuth = useSelector(getIsAuth);
+    const error = useSelector(getErrorMessage);
 
     return (
         <>
@@ -40,6 +42,7 @@ const AuthorizationForm: React.FC = () => {
                 >
                     <form className={classes.form}>
                         <h1 className={classes.title}>Авторизация</h1>
+                        {error && <div className="text-red">{error}</div>}
                         <div className="form-block">
                             <label htmlFor="login">
                                 Логин <span className="text-red">*</span>

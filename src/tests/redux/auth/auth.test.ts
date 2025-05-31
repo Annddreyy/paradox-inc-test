@@ -1,6 +1,5 @@
 import { User } from '../../../api/authAPI';
 import { actions, authReducer } from '../../../redux/auth/authReducer';
-import { InferActions } from '../../../redux/store';
 
 const initialState = {
     token: null as string | null,
